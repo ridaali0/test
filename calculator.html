@@ -90,3 +90,15 @@
          </script> 
    </body> 
 </html> 
+
+
+export const select = async (
+  collection: string,
+  where: any,
+  order: any,
+  limit: number
+): Promise<any> => {
+  const result = await db.collection(collection).find(where).sort(order).limit(limit).toArray();
+  console.log("result", result);
+  return result;
+};
