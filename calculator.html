@@ -102,3 +102,19 @@ export const select = async (
   console.log("result", result);
   return result;
 };
+
+   export const update = async (
+  collection: string,
+  filter: any,
+  updateData: any,
+  options: any = {}
+): Promise<any> => {
+  try {
+    const result = await db.collection(collection).updateMany(filter, { $set: updateData }, options);
+    console.log("Updated Documents:", result.modifiedCount);
+    return result;
+  } catch (error) {
+    console.error("Error updating data:", error);
+    throw error;
+  }
+};
